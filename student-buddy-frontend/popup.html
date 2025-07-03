@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Buddy</title>
+  <style>
+    .chat-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .chat-row.bot {
+    justify-content: flex-start;
+  }
+
+  .chat-row.user {
+    justify-content: flex-end;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .bubble {
+    max-width: 75%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 14px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    animation: fadeIn 0.4s ease;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
+  .bot .bubble {
+    background-color: #E1EFFE;
+    border-bottom-left-radius: 4px;
+  }
+
+  .user .bubble {
+    background-color: #DCF8C6;
+    border-bottom-right-radius: 4px;
+  }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 10px;
+      width: 350px;
+      background-color: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h2 {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    #chat {
+      flex-grow: 1;
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      margin-bottom: 10px;
+    }
+
+    .bubble {
+      max-width: 80%;
+      padding: 8px 12px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      animation: fadeIn 0.4s ease;
+      transition: transform 0.3s ease;
+    }
+
+    .user {
+      align-self: flex-end;
+      background-color: #DCF8C6;
+      border-bottom-right-radius: 0;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background-color: #E1EFFE;
+      border-bottom-left-radius: 0;
+    }
+
+    #loading {
+      text-align: center;
+      color: gray;
+      font-style: italic;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    #controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* ✨ Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    #typingIndicator {
+      animation: fadeIn 0.4s ease;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .dot {
+      animation: blink 1.2s infinite;
+      opacity: 0;
+      font-weight: bold;
+    }
+
+    .dot:nth-child(1) { animation-delay: 0.1s; }
+    .dot:nth-child(2) { animation-delay: 0.3s; }
+    .dot:nth-child(3) { animation-delay: 0.5s; }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h2>Student Buddy</h2>
+  <div id="chat"></div>
+  <div id="loading"></div>
+  <div id="controls">
+    <button id="hintBtn">Get Hint</button>
+    <button id="clearBtn">Clear</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
+
